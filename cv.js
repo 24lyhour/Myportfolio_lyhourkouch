@@ -17,7 +17,7 @@ const sr = ScrollReveal({
  sr.reveal('.skill',{delay:500, origin:'right'});
  sr.reveal('.bar',{delay:450, origin:'top'});
  sr.reveal('.contact',{delay:500, origin:'bottom'});
- sr.reveal('.social',{delay:550, origin:'top'});
+ // sr.reveal('.social',{delay:550, origin:'top'});
  // sr.reveal('.list',{delay:550, origin:'bottom'});
  sr.reveal('p',{delay:450, origin:'top'});
  sr.reveal('.btn',{delay:450, origin:'top'});
