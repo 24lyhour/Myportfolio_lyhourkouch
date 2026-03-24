@@ -3,113 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuch lyhour</title>
+    <title>Kouch Lyhour | Frontend Developer</title>
     <link rel="stylesheet" href="cv.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- scroll-reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
     <!-- Header -->
     <header class="header">
-        <a href="#" class="logo">Kouch<span class="color"><i>lyhour</i></span></a>
+        <a href="#" class="logo">
+            <span class="logo-text">Kouch</span><span class="logo-highlight">lyhour</span>
+        </a>
         <i class="fa-solid fa-bars" id="menu-icon"></i>
         <nav class="navbar">
-            <ul> 
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skill">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul>
+                <li><a href="#home" class="active"><span>Home</span></a></li>
+                <li><a href="#services"><span>Services</span></a></li>
+                <li><a href="#education"><span>Education</span></a></li>
+                <li><a href="#skill"><span>Skills</span></a></li>
+                <li><a href="#contact"><span>Contact</span></a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Home Section -->
     <section class="home" id="home">
-        <div class="home-img">
-            <img src="My_profile_.jpg" alt="Profile Picture">
-            <div class="glow-effect"></div>
-        </div>
-        <div class="home-content">
-            <h1>Kouch Lyhour</h1>
-            <h3 data-text="Frontend Developer">Frontend Developer</h3>
-            <p>I hear job opportunity from relation. I am very interested in applying this 
-                position. It gives me great opportunity to expand my career and experience. 
-                My potential knowledge, experience, and can write and speak English language, communication, 
-                and computer skills will guarantee me a qualified candidate for this position. 
-                I sincerely want to occupy this job.</p>
-            <div class="social-icon">
-                <a href="https://www.linkedin.com/in/kouch-lyhour-755468319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/24lyhour" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://web.facebook.com/profile.php?id=100043392893272" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://t.me/Sievchhing3636" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>            
+        <div class="home-container">
+            <div class="home-img" data-tilt>
+                <div class="img-wrapper">
+                    <img src="My_profile_.jpg" alt="Profile Picture">
+                    <div class="img-border"></div>
+                </div>
+                <div class="glow-effect"></div>
+                <div class="floating-icons">
+                    <span class="float-icon"><i class="fa-brands fa-vuejs"></i></span>
+                    <span class="float-icon"><i class="fa-brands fa-html5"></i></span>
+                    <span class="float-icon"><i class="fa-brands fa-css3-alt"></i></span>
+                    <span class="float-icon"><i class="fa-brands fa-js"></i></span>
+                    <span class="float-icon"><i class="fa-brands fa-laravel"></i></span>
+                    <span class="float-icon"><i class="fa-brands fa-flutter"></i></span>
+                    <span class="float-icon ts-icon">TS</span>
+                </div>
             </div>
-            <a href="#services" class="btn">Explore More</a>
+            <div class="home-content">
+                <div class="intro-text">
+                    <span class="greeting">Hello, I'm</span>
+                </div>
+                <h1 class="glitch" data-text="Kouch Lyhour">Kouch Lyhour</h1>
+                <div class="typing-wrapper">
+                    <h3>I'm a <span class="typed-text" data-text="Full Stack Developer"></span><span class="cursor-blink">|</span></h3>
+                </div>
+                <p class="description">I hear job opportunity from relation. I am very interested in applying this
+                    position. It gives me great opportunity to expand my career and experience.
+                    My potential knowledge, experience, and can write and speak English language, communication,
+                    and computer skills will guarantee me a qualified candidate for this position.</p>
+                <div class="social-icon">
+                    <a href="https://www.linkedin.com/in/kouch-lyhour-755468319" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/24lyhour" aria-label="GitHub" data-tooltip="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=100043392893272" aria-label="Facebook" data-tooltip="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://t.me/Sievchhing3636" aria-label="Telegram" data-tooltip="Telegram">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="#services" class="btn btn-primary">
+                        <span>Explore More</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Hire Me</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="heading">My Services</h2>
+        <h2 class="heading">
+            <span class="heading-decoration"></span>
+            My <span class="highlight">Services</span>
+        </h2>
         <div class="services-container">
-            <div class="services-box">
-                <i class="fa-solid fa-code"></i>
+            <div class="services-box" data-tilt>
+                <div class="service-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
                 <h3>Web Developer</h3>
                 <p>Creating responsive and dynamic websites with modern technologies and best practices for optimal user experience.</p>
-                <a href="#education" class="btn">Learn More</a>
+                <div class="service-number">01</div>
+                <a href="#education" class="btn btn-service">
+                    <span>Learn More</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="services-box">
-                <i class="fa-solid fa-palette"></i>
+            <div class="services-box" data-tilt>
+                <div class="service-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
                 <h3>Software Developer</h3>
                 <p>Building scalable software solutions with clean code architecture and efficient algorithms for various platforms.</p>
-                <a href="#skill" class="btn">Learn More</a>
+                <div class="service-number">02</div>
+                <a href="#skill" class="btn btn-service">
+                    <span>Learn More</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="services-box">
-                <i class="fa-solid fa-laptop-code"></i>
+            <div class="services-box" data-tilt>
+                <div class="service-icon">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
                 <h3>Web Designer</h3>
                 <p>Designing beautiful and intuitive user interfaces that combine aesthetics with functionality and accessibility.</p>
-                <a href="#contact" class="btn">Learn More</a>
+                <div class="service-number">03</div>
+                <a href="#contact" class="btn btn-service">
+                    <span>Learn More</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
     <section class="education" id="education">
-        <h2 class="heading">My Education</h2>
+        <h2 class="heading">
+            <span class="heading-decoration"></span>
+            My <span class="highlight">Education</span>
+        </h2>
         <div class="timeline">
-            <div class="container right">
-                <div class="content">
-                    <div class="tag">
-                        <h2>High School</h2>
+            <div class="timeline-item right">
+                <div class="timeline-dot">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>2016 - 2022</span>
                     </div>
-                    <div class="dece">
-                        <p>Somdach Ov High School Graduated<br>Grade C | 2016-2022</p>
-                    </div>
+                    <h3>High School</h3>
+                    <h4>Somdach Ov High School</h4>
+                    <p>Graduated with Grade C, developed strong foundation in mathematics and sciences.</p>
+                    <div class="timeline-badge">Graduated</div>
                 </div>
             </div>
-            
-            <div class="container left">
-                <div class="content">
-                    <div class="tag">
-                        <h2>University</h2>
+
+            <div class="timeline-item left">
+                <div class="timeline-dot">
+                    <i class="fa-solid fa-university"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>2022 - Present</span>
                     </div>
-                    <div class="dece">
-                        <p>National Institute of Business (NIB)<br>Bachelor's Degree of Information Technology<br>2022-Current (Junior)</p>
-                    </div>
+                    <h3>University</h3>
+                    <h4>National Institute of Business (NIB)</h4>
+                    <p>Bachelor's Degree in Information Technology. Currently in Junior year, focusing on software development and web technologies.</p>
+                    <div class="timeline-badge current">In Progress</div>
                 </div>
             </div>
-            
-            <div class="container right">
-                <div class="content">
-                    <div class="tag">
-                        <h2>Language Studies</h2>
+
+            <div class="timeline-item right">
+                <div class="timeline-dot">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>2023</span>
                     </div>
-                    <div class="dece">
-                        <p>Panasastra University of Cambodia (PUC)<br>English Language | 2023</p>
-                    </div>
+                    <h3>Language Studies</h3>
+                    <h4>Panasastra University of Cambodia (PUC)</h4>
+                    <p>English Language program to enhance communication skills for professional growth.</p>
+                    <div class="timeline-badge">Completed</div>
                 </div>
             </div>
         </div>
@@ -117,85 +227,144 @@
 
     <!-- Skills Section -->
     <section class="skill" id="skill">
-        <h2 class="heading">My Skills</h2>
-        <div class="skill-bar">
-            <div class="bar">
-                <div class="info">
-                    <span>Nuxt.js</span>
-                    <span class="percentage">70%</span>
-                </div>
-                <div class="progress-line nuxt">
-                    <span></span>
-                </div>
+        <h2 class="heading">
+            <span class="heading-decoration"></span>
+            My <span class="highlight">Skills</span>
+        </h2>
+        <div class="skills-container">
+            <div class="skills-text">
+                <h3>Technical Expertise</h3>
+                <p>I specialize in modern frontend technologies with a strong foundation in Vue.js ecosystem. My skill set includes building responsive, performant web applications with clean and maintainable code.</p>
             </div>
+            <div class="skill-bar">
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-vuejs"></i>
+                            <span>Nuxt.js</span>
+                        </div>
+                        <span class="percentage">70%</span>
+                    </div>
+                    <div class="progress-line nuxt">
+                        <span data-progress="70"></span>
+                    </div>
+                </div>
 
-            <div class="bar">
-                <div class="info">
-                    <span>Vue.js</span>
-                    <span class="percentage">75%</span>
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-vuejs"></i>
+                            <span>Vue.js</span>
+                        </div>
+                        <span class="percentage">75%</span>
+                    </div>
+                    <div class="progress-line vue">
+                        <span data-progress="75"></span>
+                    </div>
                 </div>
-                <div class="progress-line vue">
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="bar">
-                <div class="info">
-                    <span>HTML</span>
-                    <span class="percentage">90%</span>
-                </div>
-                <div class="progress-line html">
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="bar">
-                <div class="info">
-                    <span>CSS</span>
-                    <span class="percentage">85%</span>
-                </div>
-                <div class="progress-line css">
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="bar">
-                <div class="info">
-                    <span>JavaScript</span>
-                    <span class="percentage">80%</span>
-                </div>
-                <div class="progress-line javascript">
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="bar">
-                <div class="info">
-                    <span>Laravel</span>
-                    <span class="percentage">65%</span>
-                </div>
-                <div class="progress-line laravel">
-                    <span></span>
-                </div>
-            </div>
 
-            <div class="bar">
-                <div class="info">
-                    <span>TailwindCSS</span>
-                    <span class="percentage">88%</span>
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-html5"></i>
+                            <span>HTML</span>
+                        </div>
+                        <span class="percentage">90%</span>
+                    </div>
+                    <div class="progress-line html">
+                        <span data-progress="90"></span>
+                    </div>
                 </div>
-                <div class="progress-line tailwind">
-                    <span></span>
-                </div>
-            </div>
 
-            <div class="bar">
-                <div class="info">
-                    <span>Shadcn Vue</span>
-                    <span class="percentage">70%</span>
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <span>CSS</span>
+                        </div>
+                        <span class="percentage">85%</span>
+                    </div>
+                    <div class="progress-line css">
+                        <span data-progress="85"></span>
+                    </div>
                 </div>
-                <div class="progress-line shadcn">
-                    <span></span>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <span class="percentage">80%</span>
+                    </div>
+                    <div class="progress-line javascript">
+                        <span data-progress="80"></span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-laravel"></i>
+                            <span>Laravel</span>
+                        </div>
+                        <span class="percentage">65%</span>
+                    </div>
+                    <div class="progress-line laravel">
+                        <span data-progress="65"></span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-css3"></i>
+                            <span>TailwindCSS</span>
+                        </div>
+                        <span class="percentage">88%</span>
+                    </div>
+                    <div class="progress-line tailwind">
+                        <span data-progress="88"></span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-solid fa-cube"></i>
+                            <span>Shadcn Vue</span>
+                        </div>
+                        <span class="percentage">70%</span>
+                    </div>
+                    <div class="progress-line shadcn">
+                        <span data-progress="70"></span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-js"></i>
+                            <span>TypeScript</span>
+                        </div>
+                        <span class="percentage">75%</span>
+                    </div>
+                    <div class="progress-line typescript">
+                        <span data-progress="75"></span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <div class="skill-name">
+                            <i class="fa-brands fa-flutter"></i>
+                            <span>Flutter</span>
+                        </div>
+                        <span class="percentage">60%</span>
+                    </div>
+                    <div class="progress-line flutter">
+                        <span data-progress="60"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,41 +372,105 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2 class="heading">Contact Me</h2>
-        <form id="contactForm" action="">
-            <div class="input-box">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
+        <h2 class="heading">
+            <span class="heading-decoration"></span>
+            Contact <span class="highlight">Me</span>
+        </h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>kouchlyhour@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+855 XX XXX XXXX</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Phnom Penh, Cambodia</p>
+                </div>
             </div>
-            <div class="input-box">
-                <input type="number" name="phone" placeholder="Phone Number" required>   
-                <input type="text" name="subject" placeholder="Subject" required>   
-            </div>
-            <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-            <button type="submit" value="Send Message" class="btn">Send Message</button>
-        </form>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <div class="input-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-tag"></i>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                </div>
+                <div class="input-box textarea-box">
+                    <i class="fa-solid fa-message"></i>
+                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer">
-        <div class="social">
-            <a href="https://www.linkedin.com/in/kouch-lyhour-755468319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/sievchhingkouch/" aria-label="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
-            <a href="https://web.facebook.com/profile.php?id=100043392893272" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://t.me/Sievchhing3636" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">Kouch</span><span class="logo-highlight">lyhour</span>
+            </div>
+            <div class="social">
+                <a href="https://www.linkedin.com/in/kouch-lyhour-755468319" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/sievchhingkouch/" aria-label="Instagram">
+                    <i class="fa-brands fa-square-instagram"></i>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=100043392893272" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://t.me/Sievchhing3636" aria-label="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skill">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2024 Lyhour Code | All Rights Reserved
+                </p>
+                <p class="made-with">
+                    Made with <i class="fa-solid fa-heart"></i> in Cambodia
+                </p>
+            </div>
         </div>
-        <ul class="list">
-            <li><a href="#home">FAQ</a></li>
-            <li><a href="#services">Service</a></li>
-            <li><a href="#education">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright">
-            © 2024 Lyhour Code | All Rights Reserved
-        </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="cv.js"></script>
 </body>
 </html>
