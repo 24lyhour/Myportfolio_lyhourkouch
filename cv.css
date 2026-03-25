@@ -430,12 +430,6 @@ html::-webkit-scrollbar-thumb:hover {
     top: 0;
     left: 0;
     pointer-events: none;
-    animation: orbitRotate 30s linear infinite;
-}
-
-@keyframes orbitRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 .float-icon {
@@ -443,91 +437,121 @@ html::-webkit-scrollbar-thumb:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.4rem;
-    background: transparent;
-    border: none;
-    animation: floatIcon 3s ease-in-out infinite, counterRotate 30s linear infinite;
+    font-size: 2.2rem;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: floatIcon 3s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes counterRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(-360deg); }
+.float-icon:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 12px 40px rgba(0, 255, 135, 0.3);
 }
 
-/* Position icons in a circle around the image */
-/* Vue.js - 0deg (right) */
+/* Vue.js - right */
 .float-icon:nth-child(1) {
     top: 50%;
-    left: 100%;
-    margin-left: 25px;
-    margin-top: -15px;
+    left: calc(100% + 20px);
+    transform: translateY(-50%);
     color: #42b883;
     animation-delay: 0s;
 }
 
-/* HTML5 - 51deg */
+/* HTML5 - top right */
 .float-icon:nth-child(2) {
-    top: -5%;
-    left: 75%;
+    top: 5%;
+    left: calc(100% - 10px);
     color: #e34f26;
     animation-delay: 0.3s;
 }
 
-/* CSS3 - 103deg */
+/* CSS3 - top left */
 .float-icon:nth-child(3) {
-    top: -5%;
-    left: 15%;
+    top: 5%;
+    right: calc(100% - 10px);
     color: #1572b6;
     animation-delay: 0.6s;
 }
 
-/* JavaScript - 154deg (left) */
+/* JavaScript - left */
 .float-icon:nth-child(4) {
     top: 50%;
-    right: 100%;
-    margin-right: 25px;
-    margin-top: -15px;
+    right: calc(100% + 20px);
+    transform: translateY(-50%);
     color: #f7df1e;
     animation-delay: 0.9s;
 }
 
-/* Laravel - 206deg */
+/* Laravel - bottom left */
 .float-icon:nth-child(5) {
-    bottom: -5%;
-    left: 15%;
+    bottom: 5%;
+    right: calc(100% - 10px);
     color: #ff2d20;
     animation-delay: 1.2s;
 }
 
-/* Flutter - 257deg */
+/* Flutter - bottom right */
 .float-icon:nth-child(6) {
-    bottom: -5%;
-    right: 15%;
+    bottom: 5%;
+    left: calc(100% - 10px);
     color: #02569B;
     animation-delay: 1.5s;
 }
 
-/* TypeScript - 309deg (top) */
-.float-icon:nth-child(7) {
-    top: -35px;
+/* TypeScript - top center */
+.float-icon:nth-child(7),
+.float-icon.ts-icon {
+    top: -30px;
     left: 50%;
-    margin-left: -18px;
+    transform: translateX(-50%);
     color: #fff;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     background: #3178c6;
-    border-radius: 6px;
-    width: 36px;
-    height: 36px;
+    border: none;
     animation-delay: 1.8s;
 }
 
 @keyframes floatIcon {
     0%, 100% {
-        transform: rotate(0deg) scale(1);
+        transform: translateY(0);
     }
     50% {
-        transform: rotate(0deg) scale(1.15);
+        transform: translateY(-10px);
+    }
+}
+
+/* Keep transform for positioned icons */
+.float-icon:nth-child(1),
+.float-icon:nth-child(4) {
+    animation: floatIconSide 3s ease-in-out infinite;
+}
+
+.float-icon:nth-child(7) {
+    animation: floatIconTop 3s ease-in-out infinite;
+}
+
+@keyframes floatIconSide {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0);
+    }
+    50% {
+        transform: translateY(-50%) translateX(-5px);
+    }
+}
+
+@keyframes floatIconTop {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-8px);
     }
 }
 
@@ -1256,7 +1280,54 @@ section {
 
 .skill-name i {
     font-size: 2rem;
-    color: var(--main-color);
+}
+
+/* Original brand colors for skill icons */
+.skill-name i.fa-vuejs {
+    color: #42b883;
+}
+
+.skill-name i.fa-html5 {
+    color: #e34f26;
+}
+
+.skill-name i.fa-css3-alt,
+.skill-name i.fa-css3 {
+    color: #1572b6;
+}
+
+.skill-name i.fa-js {
+    color: #f7df1e;
+}
+
+.skill-name i.fa-laravel {
+    color: #ff2d20;
+}
+
+.skill-name i.fa-flutter {
+    color: #02569B;
+}
+
+.skill-name i.fa-cube {
+    color: #00ff87;
+}
+
+/* TailwindCSS icon color */
+.skill-name i.fa-css3:not(.fa-css3-alt) {
+    color: #06b6d4;
+}
+
+.ts-skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: #3178c6;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 4px;
 }
 
 .skill-name span {
@@ -1305,10 +1376,11 @@ section {
     100% { transform: translateX(100%); }
 }
 
+/* Progress bar widths */
 .progress-line.nuxt span { width: 70%; }
 .progress-line.vue span { width: 75%; }
-.progress-line.html span { width: 90%; }
-.progress-line.css span { width: 85%; }
+.progress-line.html span { width: 95%; }
+.progress-line.css span { width: 90%; }
 .progress-line.javascript span { width: 80%; }
 .progress-line.laravel span { width: 65%; }
 .progress-line.tailwind span { width: 88%; }
@@ -1316,9 +1388,329 @@ section {
 .progress-line.typescript span { width: 75%; }
 .progress-line.flutter span { width: 60%; }
 
+/* Brand colored progress bars */
+.progress-line.vue span,
+.progress-line.nuxt span {
+    background: linear-gradient(90deg, #42b883, #35495e);
+}
+
+.progress-line.html span {
+    background: linear-gradient(90deg, #e34f26, #f06529);
+}
+
+.progress-line.css span {
+    background: linear-gradient(90deg, #1572b6, #33a9dc);
+}
+
+.progress-line.javascript span {
+    background: linear-gradient(90deg, #f7df1e, #e8d44d);
+}
+
+.progress-line.laravel span {
+    background: linear-gradient(90deg, #ff2d20, #f55247);
+}
+
+.progress-line.tailwind span {
+    background: linear-gradient(90deg, #06b6d4, #38bdf8);
+}
+
+.progress-line.typescript span {
+    background: linear-gradient(90deg, #3178c6, #4a90d9);
+}
+
+.progress-line.flutter span {
+    background: linear-gradient(90deg, #02569B, #45d1fd);
+}
+
+.progress-line.shadcn span {
+    background: var(--gradient-1);
+}
+
+/* ==================== FRAMEWORKS SECTION ==================== */
+.frameworks {
+    background: var(--bg-color);
+}
+
+.frameworks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.framework-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 2rem;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.framework-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 255, 135, 0.03) 0%, rgba(0, 217, 255, 0.03) 100%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.framework-card:hover::before {
+    opacity: 1;
+}
+
+.framework-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--main-color);
+    box-shadow: var(--shadow-glow);
+}
+
+.framework-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition-bounce);
+}
+
+.framework-icon i,
+.framework-icon svg {
+    font-size: 3.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.framework-card:hover .framework-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Framework icon colors */
+.framework-icon.vue-icon {
+    background: linear-gradient(135deg, rgba(66, 184, 131, 0.2), rgba(53, 73, 94, 0.2));
+    border: 2px solid #42b883;
+}
+
+.framework-icon.vue-icon i {
+    color: #42b883;
+}
+
+.framework-icon.nuxt-icon {
+    background: linear-gradient(135deg, rgba(0, 220, 130, 0.2), rgba(0, 197, 142, 0.2));
+    border: 2px solid #00dc82;
+}
+
+.framework-icon.nuxt-icon i,
+.framework-icon.nuxt-icon svg {
+    color: #00dc82;
+}
+
+.framework-icon.laravel-icon {
+    background: linear-gradient(135deg, rgba(255, 45, 32, 0.2), rgba(255, 82, 71, 0.2));
+    border: 2px solid #ff2d20;
+}
+
+.framework-icon.laravel-icon i {
+    color: #ff2d20;
+}
+
+.framework-icon.flutter-icon {
+    background: linear-gradient(135deg, rgba(2, 86, 155, 0.2), rgba(69, 209, 253, 0.2));
+    border: 2px solid #02569B;
+}
+
+.framework-icon.flutter-icon i {
+    color: #02569B;
+}
+
+.framework-icon.getx-icon {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(75, 0, 130, 0.2));
+    border: 2px solid #8a2be2;
+}
+
+.getx-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #8a2be2;
+    letter-spacing: -1px;
+}
+
+.framework-icon.tailwind-icon {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(56, 189, 248, 0.2));
+    border: 2px solid #06b6d4;
+}
+
+.framework-icon.tailwind-icon svg {
+    color: #06b6d4;
+}
+
+.framework-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    transition: var(--transition-smooth);
+}
+
+.framework-card:hover h3 {
+    color: var(--main-color);
+}
+
+.framework-card p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.framework-tags {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.framework-tags span {
+    padding: 0.5rem 1.5rem;
+    background: rgba(0, 255, 135, 0.1);
+    border: 1px solid rgba(0, 255, 135, 0.3);
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    color: var(--main-color);
+    transition: var(--transition-smooth);
+}
+
+.framework-card:hover .framework-tags span {
+    background: rgba(0, 255, 135, 0.2);
+    border-color: var(--main-color);
+}
+
+/* Framework Progress Bars */
+.framework-progress {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.framework-progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    color: var(--text-muted);
+}
+
+.framework-percentage {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.framework-progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.framework-progress-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.framework-progress-bar span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+/* Framework progress bar colors */
+.framework-progress-bar.vue-bar span {
+    background: linear-gradient(90deg, #42b883, #35495e);
+}
+
+.framework-progress-bar.nuxt-bar span {
+    background: linear-gradient(90deg, #00dc82, #00c58e);
+}
+
+.framework-progress-bar.laravel-bar span {
+    background: linear-gradient(90deg, #ff2d20, #f55247);
+}
+
+.framework-progress-bar.flutter-bar span {
+    background: linear-gradient(90deg, #02569B, #45d1fd);
+}
+
+.framework-progress-bar.getx-bar span {
+    background: linear-gradient(90deg, #8a2be2, #9b59b6);
+}
+
+.framework-progress-bar.tailwind-bar span {
+    background: linear-gradient(90deg, #06b6d4, #38bdf8);
+}
+
+.framework-progress-bar.shadcn-bar span {
+    background: var(--gradient-1);
+}
+
+/* Shadcn icon styling */
+.framework-icon.shadcn-icon {
+    background: linear-gradient(135deg, rgba(0, 255, 135, 0.2), rgba(0, 217, 255, 0.2));
+    border: 2px solid #00ff87;
+}
+
+.framework-icon.shadcn-icon i {
+    color: #00ff87;
+}
+
+/* TypeScript icon styling */
+.framework-icon.typescript-icon {
+    background: linear-gradient(135deg, rgba(49, 120, 198, 0.2), rgba(0, 122, 204, 0.2));
+    border: 2px solid #3178c6;
+}
+
+.ts-framework-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #3178c6;
+    letter-spacing: -1px;
+}
+
+.framework-progress-bar.typescript-bar span {
+    background: linear-gradient(90deg, #3178c6, #4a90d9);
+}
+
+/* Individual card hover glows */
+.framework-card:nth-child(1):hover { box-shadow: 0 20px 50px rgba(66, 184, 131, 0.2); }
+.framework-card:nth-child(2):hover { box-shadow: 0 20px 50px rgba(0, 220, 130, 0.2); }
+.framework-card:nth-child(3):hover { box-shadow: 0 20px 50px rgba(255, 45, 32, 0.2); }
+.framework-card:nth-child(4):hover { box-shadow: 0 20px 50px rgba(2, 86, 155, 0.2); }
+.framework-card:nth-child(5):hover { box-shadow: 0 20px 50px rgba(138, 43, 226, 0.2); }
+.framework-card:nth-child(6):hover { box-shadow: 0 20px 50px rgba(6, 182, 212, 0.2); }
+.framework-card:nth-child(7):hover { box-shadow: 0 20px 50px rgba(0, 255, 135, 0.2); }
+.framework-card:nth-child(8):hover { box-shadow: 0 20px 50px rgba(49, 120, 198, 0.2); }
+
 /* ==================== CONTACT SECTION ==================== */
 .contact {
-    background: var(--bg-color);
+    background: var(--second-bg-color);
 }
 
 .contact-container {
@@ -1924,6 +2316,166 @@ section {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
+}
+
+/* ==================== PREMIUM MICRO-INTERACTIONS ==================== */
+/* Service box number glow on hover */
+.services-box:hover .service-number {
+    text-shadow: 0 0 30px rgba(0, 255, 135, 0.5);
+}
+
+/* Enhanced card lift effect */
+.services-box,
+.contact-card,
+.timeline-content {
+    will-change: transform;
+}
+
+/* Skill bar hover glow */
+.bar:hover .progress-line span {
+    box-shadow: 0 0 20px rgba(0, 255, 135, 0.4);
+}
+
+/* Premium text selection */
+::selection {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+::-moz-selection {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+/* Smooth focus states */
+input:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Link hover underline animation */
+.footer-links li a::after,
+.navbar ul li a span::after {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image loading state */
+.home-img img {
+    background: linear-gradient(135deg, var(--glass-bg), var(--second-bg-color));
+}
+
+/* Contact icon pulse on hover */
+.contact-card:hover .contact-icon {
+    animation: iconPulseHover 0.6s ease;
+}
+
+@keyframes iconPulseHover {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Button shine effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+/* Timeline dot pulse */
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    opacity: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0; }
+    50% { transform: scale(1.5); opacity: 0.3; }
+}
+
+/* Floating icon individual colors glow */
+.float-icon:nth-child(1):hover { box-shadow: 0 12px 40px rgba(66, 184, 131, 0.4); }
+.float-icon:nth-child(2):hover { box-shadow: 0 12px 40px rgba(227, 79, 38, 0.4); }
+.float-icon:nth-child(3):hover { box-shadow: 0 12px 40px rgba(21, 114, 182, 0.4); }
+.float-icon:nth-child(4):hover { box-shadow: 0 12px 40px rgba(247, 223, 30, 0.4); }
+.float-icon:nth-child(5):hover { box-shadow: 0 12px 40px rgba(255, 45, 32, 0.4); }
+.float-icon:nth-child(6):hover { box-shadow: 0 12px 40px rgba(2, 86, 155, 0.4); }
+.float-icon:nth-child(7):hover,
+.float-icon.ts-icon:hover { box-shadow: 0 12px 40px rgba(49, 120, 198, 0.4); }
+
+/* Navbar link gradient underline */
+.navbar ul li a span {
+    position: relative;
+}
+
+.navbar ul li a span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover span::after,
+.navbar ul li a.active span::after {
+    width: 100%;
+}
+
+/* Social icon individual brand colors on hover */
+.social-icon a:nth-child(1):hover { background: linear-gradient(135deg, #0077b5, #00a0dc); }
+.social-icon a:nth-child(2):hover { background: linear-gradient(135deg, #333, #6e5494); }
+.social-icon a:nth-child(3):hover { background: linear-gradient(135deg, #1877f2, #3b5998); }
+.social-icon a:nth-child(4):hover { background: linear-gradient(135deg, #0088cc, #26a5e4); }
+
+.social-icon a:nth-child(1):hover::before,
+.social-icon a:nth-child(2):hover::before,
+.social-icon a:nth-child(3):hover::before,
+.social-icon a:nth-child(4):hover::before {
+    opacity: 0;
+}
+
+/* Footer social brand colors */
+.footer .social a:nth-child(1):hover { background: linear-gradient(135deg, #0077b5, #00a0dc); }
+.footer .social a:nth-child(2):hover { background: linear-gradient(135deg, #e4405f, #833ab4); }
+.footer .social a:nth-child(3):hover { background: linear-gradient(135deg, #1877f2, #3b5998); }
+.footer .social a:nth-child(4):hover { background: linear-gradient(135deg, #0088cc, #26a5e4); }
+
+/* Heading animation */
+.heading {
+    background-size: 200% auto;
+    animation: headingShine 3s linear infinite;
+}
+
+.heading .highlight {
+    background-size: 200% auto;
+    animation: textShine 3s linear infinite;
+}
+
+@keyframes textShine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes headingShine {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
 }
 
 .sr-only {

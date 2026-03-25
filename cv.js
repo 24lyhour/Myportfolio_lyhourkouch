@@ -43,6 +43,39 @@ sr.reveal('.skills-text', { origin: 'left', delay: 200 });
 sr.reveal('.skill-bar', { origin: 'right', delay: 300 });
 sr.reveal('.bar', { origin: 'left', delay: 100, interval: 100 });
 
+// Frameworks Section
+sr.reveal('.framework-card', { origin: 'bottom', delay: 200, interval: 150 });
+
+// ==================== FRAMEWORK PROGRESS BARS ANIMATION ====================
+const frameworksSection = document.querySelector('.frameworks');
+let frameworkBarsAnimated = false;
+
+function animateFrameworkBars() {
+    if (frameworkBarsAnimated) return;
+
+    const frameworkBars = document.querySelectorAll('.framework-progress-bar span');
+    frameworkBars.forEach(bar => {
+        const progress = bar.getAttribute('data-progress');
+        if (progress) {
+            bar.style.width = progress + '%';
+        }
+    });
+
+    frameworkBarsAnimated = true;
+}
+
+if (frameworksSection) {
+    const frameworkObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(animateFrameworkBars, 500);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    frameworkObserver.observe(frameworksSection);
+}
+
 // Contact Section
 sr.reveal('.contact-card', { origin: 'left', delay: 200, interval: 150 });
 sr.reveal('.contact-form', { origin: 'right', delay: 300 });
@@ -198,9 +231,9 @@ function animateSkillBars() {
         } else if (bar.parentElement.classList.contains('vue')) {
             width = '75%';
         } else if (bar.parentElement.classList.contains('html')) {
-            width = '90%';
+            width = '95%';
         } else if (bar.parentElement.classList.contains('css')) {
-            width = '85%';
+            width = '90%';
         } else if (bar.parentElement.classList.contains('javascript')) {
             width = '80%';
         } else if (bar.parentElement.classList.contains('laravel')) {
@@ -598,3 +631,137 @@ document.addEventListener('DOMContentLoaded', () => {
         bar.style.width = '0%';
     });
 });
+
+// ==================== MAGNETIC BUTTON EFFECT ====================
+const magneticButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+
+if (window.innerWidth > 768) {
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// ==================== FLOATING ICON INTERACTION ====================
+const floatingIcons = document.querySelectorAll('.float-icon');
+
+floatingIcons.forEach(icon => {
+    icon.addEventListener('mouseenter', () => {
+        icon.style.zIndex = '100';
+    });
+
+    icon.addEventListener('mouseleave', () => {
+        icon.style.zIndex = '';
+    });
+});
+
+// ==================== COUNTER ANIMATION FOR PERCENTAGES ====================
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target + '%';
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + '%';
+        }
+    }, 30);
+}
+
+const percentageElements = document.querySelectorAll('.percentage');
+let countersAnimated = false;
+
+if (skillSection) {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !countersAnimated) {
+                percentageElements.forEach(el => {
+                    const target = parseInt(el.textContent);
+                    el.textContent = '0%';
+                    setTimeout(() => animateCounter(el, target), 300);
+                });
+                countersAnimated = true;
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counterObserver.observe(skillSection);
+}
+
+// ==================== SMOOTH SCROLL PROGRESS ====================
+const scrollProgress = document.createElement('div');
+scrollProgress.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00ff87, #00d9ff, #a855f7);
+    z-index: 10001;
+    transition: width 0.1s ease;
+    border-radius: 0 2px 2px 0;
+`;
+document.body.appendChild(scrollProgress);
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = scrollPercent + '%';
+});
+
+// ==================== IMAGE LAZY LOADING ENHANCEMENT ====================
+const profileImg = document.querySelector('.home-img img');
+if (profileImg) {
+    profileImg.addEventListener('load', () => {
+        profileImg.style.animation = 'fadeIn 0.5s ease forwards';
+    });
+}
+
+// Add fade in animation
+const fadeStyle = document.createElement('style');
+fadeStyle.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+`;
+document.head.appendChild(fadeStyle);
+
+// ==================== SECTION VISIBILITY EFFECTS ====================
+const allSections = document.querySelectorAll('section');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+allSections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Add section visible styles
+const sectionStyle = document.createElement('style');
+sectionStyle.textContent = `
+    section {
+        opacity: 0.9;
+        transition: opacity 0.5s ease;
+    }
+    section.section-visible {
+        opacity: 1;
+    }
+`;
+document.head.appendChild(sectionStyle);
